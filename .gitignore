@@ -208,3 +208,6 @@ __marimo__/
 
 # Ignora l'intera cartella dataset
 Final-Dataset/
+dataset_pca_incremental/
+dataset_preview.xlsx
+pca_sample.csv
