@@ -208,6 +208,9 @@ __marimo__/
 
 # Ignora l'intera cartella dataset
 Final-Dataset/
-dataset_pca_incremental/
-dataset_preview.xlsx
-pca_sample.csv
+X_test_scaled.csv
+X_train_scaled.csv
+y_test.csv
+y_train_final.csv
+TrainTestSplit/
+ModelResults/
