@@ -207,10 +207,6 @@ marimo/_lsp/
 __marimo__/
 
 # Ignora l'intera cartella dataset
-Final-Dataset/
-X_test_scaled.csv
-X_train_scaled.csv
-y_test.csv
-y_train_final.csv
-TrainTestSplit/
-ModelResults/
+UWF-ZeekData22/
+UWF-ZeekDataFall22/
+
