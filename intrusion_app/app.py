@@ -16,7 +16,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 import shap
 import time
-
+import os
 st.set_page_config(page_title="ML IDS Dashboard", layout="wide")
 
 # -----------------------
@@ -38,7 +38,7 @@ def load_data(parquet_path: str):
     latent_cols = [c for c in df.columns if c.startswith("latent")]
     return df, latent_cols
 
-DATA_PATH = r"C:/Users/maria/Desktop/Zeek_ML/processed_zeekdata22/X_ensemble_latent_labeled.parquet"
+DATA_PATH = os.path.join("data", "X_ensemble_latent_labeled.parquet")
 df, latent_cols = load_data(DATA_PATH)
 st.header("🔎 ML Intrusion Detection — Interactive Report")
 st.markdown(f"Dataset: **{df.shape[0]} samples**, **{len(latent_cols)} latent features**")
