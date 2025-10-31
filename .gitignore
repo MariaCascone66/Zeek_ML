@@ -207,11 +207,6 @@ marimo/_lsp/
 __marimo__/
 
 # Ignora l'intera cartella dataset
-UWF-ZeekData22/
 UWF-ZeekDataFall22/
-X_classifier.csv
-y_classifier.csv
 DaRicordare.txt
-processed_zeekdata22/
-processed_zeekdata22.parquet
 prova non supervizionato.ipynb
