@@ -1,0 +1,10 @@
+streamlit>=1.20
+pandas
+numpy
+scikit-learn
+plotly
+matplotlib
+seaborn
+umap-learn
+shap
+pyarrow
