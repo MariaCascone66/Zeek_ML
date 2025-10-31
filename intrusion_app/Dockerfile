@@ -19,7 +19,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # --- Copia app e dati
 COPY app.py .
-COPY processed_zeekdata22 ./processed_zeekdata22   
 COPY data .
 # --- Espone porta Streamlit
 EXPOSE 8501
