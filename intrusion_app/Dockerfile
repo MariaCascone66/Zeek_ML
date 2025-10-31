@@ -24,4 +24,4 @@ COPY data .
 EXPOSE 8501
 
 # --- Comando per lanciare Streamlit
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=localhost", "--browser.serverAddress=localhost"]
+CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0", "--browser.serverAddress=0.0.0.0"]
