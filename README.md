@@ -1,94 +1,103 @@
-🔍 Network Threat Intelligence & Anomaly Detection Dashboard
-Machine Learning & Explainable AI for Zeek Network Logs
+# 🔍 Network Threat Intelligence & Anomaly Detection Dashboard  
+### Machine Learning & Explainable AI for Zeek Network Logs
 
-Questo progetto propone una pipeline completa per l’analisi di traffico di rete e il rilevamento di attacchi tramite tecniche di Machine Learning e Explainable AI (XAI), partendo dai log conn.log di Zeek (ex Bro).
+Questo progetto propone una pipeline completa per l’analisi di traffico di rete e il rilevamento di attacchi tramite tecniche di **Machine Learning** e **Explainable AI (XAI)**, partendo dai log `conn.log` di **Zeek (ex Bro)**.
 
-L’applicazione include:
+L'applicazione fornisce un ambiente per:
 
-✅ Pre–processing e feature engineering da Zeek
+- ✅ Pre–processing e feature engineering da log Zeek
+- ✅ Modelli ML per rilevamento anomalie e tecniche MITRE
+- ✅ Modellazione latente, clustering e riduzione dimensionale
+- ✅ Dashboard interattiva (Streamlit)
+- ✅ Heatmap, grafici e spiegazioni evento–per–evento
+- ✅ Confronto anomalie vs baseline normale (deviazioni latenti)
+- ✅ Generazione report investigativi
 
-✅ Modelli ML per classificazione anomalie / tattiche di attacco
+---
 
-✅ Latent feature modeling e clustering avanzato
+## 🎯 Obiettivo del progetto
 
-✅ Dashboard interattiva (Streamlit) per analisi, explainability e reportistica
+I moderni sistemi di rilevamento e risposta richiedono capacità automatiche per riconoscere tattiche e tecniche d'attacco da grandi volumi di log di rete.
 
-✅ Visualizzazioni avanzate: heatmap latenti, clustering figurativo, spiegazioni evento–per–evento
+Zeek genera log `conn` con informazioni sulle sessioni TCP/UDP/ICMP che rappresentano una fonte preziosa per individuare comportamenti malevoli.
 
-✅ Modulo per confrontare anomalie con la baseline normale (deviazione latente)
+> **Obiettivo:** trasformare questi log in rappresentazioni utili per modelli ML, analizzare connessioni anomale e fornire strumenti interattivi per investigazione e threat hunting.
 
-✅ Export report e supporto all’analisi investigativa
+---
 
-🎯 Obiettivo del progetto
+## 🚀 Funzionalità principali
 
-I moderni sistemi di rilevamento e risposta richiedono capacità automatiche per riconoscere tattiche e tecniche d’attacco da grandi volumi di log di rete.
+| Categoria | Funzionalità |
+|---|---|
+📥 **Ingest & Preprocessing** | Parsing Zeek, normalizzazione feature, flag anomalie |
+🧠 **Machine Learning** | Modelli supervisionati & semi-supervisionati (AE, clustering) |
+🎛 **Dashboard Streamlit** | Filtri, tabelle, visualizzazioni interattive |
+🔥 **Explainable AI** | Feature latenti, confronto anomalie vs baseline |
+📈 **Visual Analytics** | PCA / UMAP, heatmap, scatter 2D |
+📑 **Reportistica** | Esportazione e analisi degli eventi |
 
-Zeek genera log conn che includono dettagli sulle sessioni TCP/UDP/ICMP e rappresentano una fonte informativa ricca per identificare comportamenti malevoli.
+---
 
-L’obiettivo è trasformare questi log in rappresentazioni significative per modelli ML, analizzare il comportamento di connessioni anomale e fornire strumenti interattivi e interpretativi per l’investigazione.
+## 🧠 Modelli & Approccio
 
-🚀 Funzionalità principali
-Categoria	Funzionalità
-📥 Ingest & Preprocessing	Parsing Zeek logs, normalizzazione feature, definizione flag anomalia
-🧠 Machine Learning	Modelli supervisionati & unsupervisionati (AE/latent, clustering)
-🎛 Dashboard Streamlit	Navigazione dataset, filtri, visualizzazioni tecniche
-🔥 Explainable AI	Analisi dimensioni latenti, heatmap, confronto anomalie vs baseline
-📈 Visual Analytics	UMAP/T-SNE plot, heatmap medie latenti, grafici interattivi
-📑 Reportistica	Generazione report, analisi esempi, confronti categorie
-🧠 Modelli & Metodologia
+- Estrazione feature da `conn.log`
+- Encoding numerico/categorico
+- Training su traffico normale + anomalie annotate
+- Riduzione dimensionale (Autoencoder / PCA / UMAP)
+- Analisi latente per capire *perché* un evento è anomalo
+- Dashboard XAI per investigazione manuale
 
-Estrazione feature da conn.log
+---
 
-Encoding feature numeriche/categoriche
+## 🖥️ Dashboard — Moduli Principali
 
-Training modelli ML per anomalie e tecniche sospette
+- Media delle feature latenti (anomalia vs normale)
+- Heatmap latenti
+- Metriche del modello
+- Cluster 2D UMAP/PCA
+- Drill-down anomalie con spiegazione
 
-Riduzione dimensionale per interpretazione (UMAP / autoencoder)
+---
 
-Analisi latente e confronto anomalie con baseline normale
-
-Dashboard per investigazione interattiva
-
-🖥️ Screenshot / UI (placeholder)
-
-Dashboard con moduli per:
-
-Media feature latenti (anomalia vs normale)
-
-Heatmap
-
-Metriche modello
-
-Cluster view
-
-Drill-down anomalie
-
-🗂 Struttura progetto
-├── intrusion_app/  
-|   ├── app.py                   
+## 🗂 Struttura del progetto
+├── intrusion_app/
+│ ├── app.py # Streamlit dashboard
+│
 ├── Dataset-Preparation.ipynb
 ├── Model_SemiSupervised.ipynb
 ├── Model-Training.ipynb
 ├── Model-Training-Imbalanced.ipynb
-├── .gitignore
-├── processed_zeekdata22/              #file intermedi di salvataggio presenti nel codice
-├── UWF-ZeekDataFall22/                # Log Zeek e dataset
+│
+├── processed_zeekdata22/ # File temporanei e dataset processati
+├── UWF-ZeekDataFall22/ # Log Zeek originali
 └── README.md
 
-▶️ Avvio dashboard
-streamlit run src/app.py           #src= percorso cartella di appartenenza
+---
+
+## ▶️ Avvio della dashboard
+
+```bash
+streamlit run intrusion_app/app.py
 
 📂 Dataset
 
-Dataset contenente sessioni Zeek annotate (normali vs malevole), con esempi di tattiche di attacco.
+Dataset contenente sessioni Zeek annotate (traffico normale + malevolo), incluse tattiche reali.
 
-📎 Pagina ufficiale dataset:
-👉 https://datasets.uwf.edu/
+📎 Fonte dataset:
+https://datasets.uwf.edu/
 
-🔗 Codice & Risorse
+🔗 Codice e risorse
 
 📁 Repository GitHub:
-👉 https://github.com/MariaCascone66/Zeek_ML.git
+https://github.com/MariaCascone66/Zeek_ML.git
 
-📊 Grafici completi e notebook di analisi sono disponibili nel repo.
-(Alcune visualizzazioni non sono incluse nella relazione per evitare ridondanza.)
+📊 Tutti i notebook e grafici sono presenti nel repository.
+(Alcuni grafici non sono inclusi nella relazione per evitare ridondanza)
+
+📜 Riferimenti
+
+Zeek Network Security Monitor — https://zeek.org
+
+Linee guida Explainable AI per cybersecurity
+
+Tecniche MITRE ATT&CK per classificazione tattiche
